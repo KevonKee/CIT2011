@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Css sheet link -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Bootsrap Link -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- javascript file link -->
+  <script src="index.js"></script>
+  <title>LEAGUE OF LEGENDS JEAPORDY</title>
+</head>
+
+<body>
+  <div id="showcharts" class="container">
+
+  </div>
+  <div id="Registration" class="container">
+    <!-- Form to collect player data -->
+    <form id="form1" class="needs-validation" novalidate>
+      <h1>Registration</h1>
+      <div class="row">
+        <div class="col-4">
+          <input id="fname" type="text" class="form-control" placeholder="First name" aria-label="First name" required minlength="3">
+          <div class="invalid-feedback">
+            Please enter a valid first name.
+          </div>
+        </div>
+        <div class="col-4">
+          <input id="lname" type="text" class="form-control" placeholder="Last name" aria-label="Last name" required>
+          <div class="invalid-feedback">
+            Please enter a valid last name.
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <div class="row">
+        <div class="col-4">
+          <input id="dob" type="date" class="form-control" aria-label="DOB" required>
+        </div>
+        <div class="col-4">
+          <input id="age" type="text" class="form-control" placeholder="age" aria-label="age" onclick="getage()">
+          <div class="invalid-feedback">
+            Age must be greater than 12
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-4">
+          <input id="email" type="email" class="form-control" placeholder="email@example.com" aria-label="Email">
+          <div class="invalid-feedback">
+            email must end with @example.com
+          </div>
+        </div>
+        <div class="col-4">
+          <select id="gender" class="form-select" aria-label="Gender" required>
+            <option selected value="">Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+          <div class="invalid-feedback">
+            Required input
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <div class="row">
+        <div class="col-4">
+          <input id="street" type="text" class="form-control" placeholder="Street" aria-label="Street">
+          <br>
+          <input id="city" type="text" class="form-control" placeholder="City" aria-label="City">
+        </div>
+        <div class="col-4">
+          <input id="town" type="text" class="form-control" placeholder="Town" aria-label="Town" required>
+          <br>
+          <input id="country" type="text" class="form-control" placeholder="Country" aria-label="Country">
+        </div>
+
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-4">
+          <select id="edulvl" class="form-select" aria-label="Educational level" required>
+            <option selected value="">Educational Level</option>
+            <option value="Primary">Primary</option>
+            <option value="Secondary">Secondary</option>
+            <option value="Teritiary">Tertiary</option>
+          </select>
+          <div class="invalid-feedback">
+            Required input
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-4">
+          <div class="mb-3">
+            <label for="imgself" class="form-label">Image of yourself</label>
+            <input id="imgself" class="form-control" type="file">
+          </div>
+        </div>
+      </div>
+
+      <br><br>
+      <button id="submit" type="submit" class="btn btn-primary" onclick="submit1()">Submit</button>
+      <br><br>
+
+    </form>
+    <div id="resultarea" class="invisible">
+      <h1>Results</h1>
+      <textarea id="showpercentage" class="form-control" aria-label="With textarea"> Show Percentage</textarea>
+      <br><br>
+      <textarea id="showallplayers" class="form-control" aria-label="With textarea"> Show all players</textarea>
+    </div>
+
+    <br>
+    <form class="" action="index.html" method="post">
+      <button id="playbutton" type="button" class="btn btn-primary invisible" disabled onclick="PlayGame(),rando()">Play</button>
+      <button id="quit" type="submit" class="btn btn-primary invisible">Quit</button>
+      <button id="results" type="button" class="btn btn-primary invisible" name="button" onclick="findpercentagescore()">Results</button>
+    </form>
+
+
+  </div>
+  <br><br>
+  <div id="playarea" class="container invisible">
+    <h1>Play</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Lore</th>
+          <th scope="col">Champions</th>
+          <th scope="col">Abilities</th>
+          <th scope="col">Items</th>
+          <th scope="col">Arcane??</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td><button id="Lore100" class="btn btn-light btn-lg" type="button" name="button" onclick="L1()">100 </button></td>
+          <td><button id="Champions100" class="btn btn-light btn-lg" type="button" name="button" onclick="C1()">100</button></td>
+          <td><button id="Abilities100" class="btn btn-light btn-lg" type="button" name="button" onclick="AB1()">100</button></td>
+          <td><button id="Items100" class="btn btn-light btn-lg" type="button" name="button" onclick="I1()">100</button></td>
+          <td><button id="Arcane100" class="btn btn-light btn-lg" type="button" name="button" onclick="A1()">100</button></td>
+        </tr>
+        <tr>
+          <td><button id="Lore200" class="btn btn-light btn-lg " type="button" name="button" onclick="L2()">200 </button></td>
+          <td><button id="Champions200" class="btn btn-light btn-lg " type="button" name="button" onclick="C2()">200</button></td>
+          <td><button id="Abilities200" class="btn btn-light btn-lg " type="button" name="button" onclick="AB2()">200</button></td>
+          <td><button id="Items200" class="btn btn-light btn-lg " type="button" name="button" onclick="I2()">200</button></td>
+          <td><button id="Arcane200" class="btn btn-light btn-lg " type="button" name="button" onclick="A2()">200</button></td>
+        </tr>
+        <tr>
+          <td><button id="Lore300" class="btn btn-light btn-lg " type="button" name="button" onclick="L3()">300 </button></td>
+          <td><button id="Champions300" class="btn btn-light btn-lg " type="button" name="button" onclick="C3()">300</button></td>
+          <td><button id="Abilities300" class="btn btn-light btn-lg " type="button" name="button" onclick="AB3()">300</button></td>
+          <td><button id="Items300" class="btn btn-light btn-lg " type="button" name="button" onclick="I3()">300</button></td>
+          <td><button id="Arcane300" class="btn btn-light btn-lg " type="button" name="button" onclick="A3()">300</button></td>
+        </tr>
+        <tr>
+          <td><button id="Lore400" class="btn btn-light btn-lg " type="button" name="button" onclick="L4()">400 </button></td>
+          <td><button id="Champions400" class="btn btn-light btn-lg " type="button" name="button" onclick="C4()">400</button></td>
+          <td><button id="Abilities400" class="btn btn-light btn-lg " type="button" name="button" onclick="AB4()">400</button></td>
+          <td><button id="Items400" class="btn btn-light btn-lg " type="button" name="button" onclick="I4()">400</button></td>
+          <td><button id="Arcane400" class="btn btn-light btn-lg " type="button" name="button" onclick="A4()">400</button></td>
+        </tr>
+        <tr>
+          <td><button id="Lore500" class="btn  btn-light btn-lg" type="button" name="button " onclick="L5()">500 </button></td>
+          <td><button id="Champions500" class="btn btn-light btn-lg " type="button" name="button" onclick="C5()">500</button></td>
+          <td><button id="Abilities500" class="btn btn-light btn-lg " type="button" name="button" onclick="AB5()">500</button></td>
+          <td><button id="Items500" class="btn btn-light btn-lg " type="button" name="button" onclick="I5()">500</button></td>
+          <td><button id="Arcane500" class="btn btn-light btn-lg " type="button" name="button" onclick="A5()">500</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="questionarea">
+
+      <p id="questions" class="invisible">Your question will appear here</p>
+      <p id="answers" class="invisible">ahh</p>
+
+      <form id="form2" class="invisible" action="index.html" method="post">
+        <div id="timer" class="invisible">
+
+        </div>
+        <input id="AnswerInput" type="text" class="form-control" placeholder="Answer here" aria-label="Answer">
+        <br>
+        <button id="checkbutton" type="button" class="btn btn-primary" disabled onclick="CheckAnswer()">Answer</button> <button id="Playagain" type="button" class="btn btn-primary" name="button" onclick="PlayGame()">Play again</button>
+        <button id="endbutton" type="button" class="btn btn-primary" disabled onclick="findpercentagescore()">End Game </button>
+        <br> <br>
+        <button id="revealbutton" class="btn btn-primary invisible" type="button" name="button" onclick="Answerreveal(),setTimeout(hideans,5000)">Reveal Answer?</button>
+        <button id="nobuttons" class="btn btn-primary invisible" type="button" name="button on" onclick="nobutton(),hideans()">No thanks</button>
+
+      </form>
+
+
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>
